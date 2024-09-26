@@ -15,3 +15,4 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'adminfilter']);
 
 //user routes
 $routes->get('/user', 'User::index', ['filter' => 'userfilter']);
+$routes->get('/user/catalog', 'User::catalog', ['filter' => 'userfilter']);

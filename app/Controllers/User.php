@@ -11,4 +11,8 @@ class User extends BaseController
     {
         return view('user/index');
     }
+    public function catalog()
+    {
+        return view ('user/catalog');
+    }
 }
