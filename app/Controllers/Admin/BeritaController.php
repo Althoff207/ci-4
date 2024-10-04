@@ -25,9 +25,10 @@ class BeritaController extends Controller
         $model = new BeritaModel();
         $gambar = $this->request->getFile('gambar');
 
+        // Pindahkan gambar ke folder public/uploads
         if ($gambar->isValid() && !$gambar->hasMoved()) {
             $gambarName = $gambar->getRandomName();
-            $gambar->move(WRITEPATH . 'uploads', $gambarName);
+            $gambar->move(FCPATH . 'uploads', $gambarName); // Pindahkan gambar
         } else {
             return redirect()->back()->with('error', 'Gagal mengupload gambar')->withInput();
         }
@@ -64,8 +65,9 @@ class BeritaController extends Controller
 
         $gambar = $this->request->getFile('gambar');
         if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            // Jika gambar baru diunggah, pindahkan dan simpan nama gambar
             $gambarName = $gambar->getRandomName();
-            $gambar->move(WRITEPATH . 'uploads', $gambarName);
+            $gambar->move(FCPATH . 'uploads', $gambarName); // Pindahkan gambar
             $data['gambar'] = $gambarName;
         }
 
@@ -73,6 +75,7 @@ class BeritaController extends Controller
         session()->setFlashdata('success', 'Berita berhasil diupdate.');
         return redirect()->to('/admin'); // Redirect ke halaman admin setelah memperbarui
     }
+
 
     public function delete($id)
     {

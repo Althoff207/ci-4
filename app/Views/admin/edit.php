@@ -1,5 +1,3 @@
-edit.php
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +12,14 @@ edit.php
     <div class="container mt-4">
         <h1>Edit Berita</h1>
 
-        <form action="<?= site_url('/admin/berita/update/' . $berita['id']) ?>" method="post">
+        <form action="<?= site_url('/admin/berita/update/' . $berita['id']) ?>" method="post" enctype="multipart/form-data"> <!-- Tambahkan enctype -->
             <div class="form-group">
                 <label for="gambar">Gambar:</label>
-                <input type="text" name="gambar" class="form-control" value="<?= $berita['gambar'] ?>" required>
+                <input type="file" name="gambar" class="form-control"> <!-- Ubah menjadi input file -->
+                <small>Biarkan kosong jika tidak ingin mengubah gambar.</small> <!-- Info tambahan -->
+                <?php if ($berita['gambar']): ?>
+                    <img src="<?= base_url('uploads/' . $berita['gambar']) ?>" alt="Gambar Berita" style="width:100px;height:auto;margin-top:10px;">
+                <?php endif; ?>
             </div>
             <div class="form-group">
                 <label for="judul">Judul:</label>
