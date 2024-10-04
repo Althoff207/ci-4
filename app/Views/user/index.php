@@ -53,7 +53,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
         <li class="nav-item">

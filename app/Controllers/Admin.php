@@ -11,5 +11,4 @@ class Admin extends BaseController
     {
         return view('admin/index');
     }
-    
 }
