@@ -1,22 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-</head>
-<body>
-    <h1>Admin</h1>
-    <hr>
-    <h2>Halo <?php echo session()->get('name'); ?></h2>
-    <hr>
-    <h2>Your Level is <?php echo session()->get('level'); ?> </h2>
-
-    <hr>
-    <a href="<?php echo base_url('/logout'); ?>">Logout</a>
-</body>
-</html> -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -515,42 +496,40 @@
             <a href="<?php echo base_url('/logout') ?>" class="btn btn-danger mb-3">Logout</a>
 
             <table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Gambar</th>
-            <th>Judul</th>
-            <th>Deskripsi</th>
-            <th>Penulis</th>
-            <th>Jadwal</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (empty($berita)): ?>
-            <tr>
-                <td colspan="7" class="text-center">No berita available</td>
-            </tr>
-        <?php else: ?>
-            <?php foreach ($berita as $b): ?>
+              <thead>
                 <tr>
-                    <td><?= $b['id'] ?></td>
-                    <td>
+                  <th>Gambar</th>
+                  <th>Judul</th>
+                  <th>Deskripsi</th>
+                  <th>Penulis</th>
+                  <th>Jadwal</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php if (empty($berita)): ?>
+                  <tr>
+                    <td colspan="7" class="text-center">No berita available</td>
+                  </tr>
+                <?php else: ?>
+                  <?php foreach ($berita as $b): ?>
+                    <tr>
+                      <td>
                         <img src="<?= base_url('uploads/' . $b['gambar']) ?>" alt="Gambar Berita" style="width:100px;height:auto;">
-                    </td>
-                    <td><?= $b['judul'] ?></td>
-                    <td><?= $b['deskripsi'] ?></td>
-                    <td><?= $b['penulis'] ?></td>
-                    <td><?= $b['jadwal'] ?></td>
-                    <td>
+                      </td>
+                      <td><?= $b['judul'] ?></td>
+                      <td><?= $b['deskripsi'] ?></td>
+                      <td><?= $b['penulis'] ?></td>
+                      <td><?= $b['jadwal'] ?></td>
+                      <td>
                         <a href="<?= site_url('/admin/berita/edit/' . $b['id']) ?>" class="btn btn-warning">Edit</a>
                         <a href="<?= site_url('/admin/berita/delete/' . $b['id']) ?>" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </tbody>
-</table>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </tbody>
+            </table>
 
 
           </div>

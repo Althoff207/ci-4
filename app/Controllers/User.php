@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\BeritaModel; // Tambahkan ini untuk menggunakan BeritaModel
 use CodeIgniter\HTTP\ResponseInterface;
 
 class User extends BaseController
@@ -11,8 +12,12 @@ class User extends BaseController
     {
         return view('user/index');
     }
+
     public function catalog()
     {
-        return view ('user/catalog');
+        $beritaModel = new BeritaModel();
+        $data['berita'] = $beritaModel->findAll(); // Mengambil semua data berita
+
+        return view('user/catalog', $data); // Mengirim data berita ke view catalog.php
     }
 }

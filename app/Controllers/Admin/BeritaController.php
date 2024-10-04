@@ -84,4 +84,11 @@ class BeritaController extends Controller
         session()->setFlashdata('success', 'Berita berhasil dihapus.');
         return redirect()->to('/admin'); // Redirect ke halaman admin setelah menghapus
     }
+    public function catalog()
+{
+    $beritaModel = new BeritaModel();
+    $data['berita'] = $beritaModel->findAll(); // Mengambil semua data berita
+
+    return view('user/catalog', $data); // Mengirim data berita ke view catalog.php
+}
 }
